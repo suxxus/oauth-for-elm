@@ -1,0 +1,27 @@
+{
+  "name": "implementing-oauth",
+  "version": "0.0.0",
+  "description": "studies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suxxus-studies-others/Implementing-OAuth.git"
+  },
+  "keywords": [
+    "studies",
+    "oauth"
+  ],
+  "author": "suxxus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suxxus-studies-others/Implementing-OAuth/issues"
+  },
+  "homepage": "https://github.com/suxxus-studies-others/Implementing-OAuth#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "express": "^4.17.1"
+  }
+}
