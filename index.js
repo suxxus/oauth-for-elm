@@ -6,7 +6,7 @@ const axios = require("axios");
 // inside the public directory
 //
 const clientID = "598fcc05a2cb9bf58415";
-const clientSecret = "8ac1d5751cf294f611e5dfd0d4ff0e1f59d537e9";
+const clientSecret = "";
 
 const app = express();
 app.use(express.static(__dirname + "/public"));
