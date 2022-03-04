@@ -21,8 +21,11 @@
   },
   "homepage": "https://github.com/suxxus-studies-others/Implementing-OAuth#readme",
   "dependencies": {
-    "axios": "0.19.0",
+    "axios": "^0.26.0",
     "cors": "2.8.5",
     "express": "^4.17.1"
+  },
+  "engines": {
+    "node": ">=0.10.3 <15"
   }
 }
