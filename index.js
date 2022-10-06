@@ -40,9 +40,13 @@ app.get("/oauth/redirect", (req, res) => {
       res.redirect(`/welcome.html?access_token=${accessToken}`);
     })
     .catch((error) => {
-      console.error(error);
+      // console.error(error);
     });
 });
 
 // Start the server on port 8080
-app.listen(8080, () => console.log("listening on 8080"));
+app.listen(8080, () => {
+  console.log("listening on 8080");
+  console.log("client_secret ", clientSecret);
+  console.log("client_id", clientID);
+});
