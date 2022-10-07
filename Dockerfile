@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 
-COPY . index.js
+COPY index.js ./index.js
 
 RUN npm install
 RUN ls -a
