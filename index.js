@@ -10,9 +10,10 @@ const axios = require("axios");
 //
 const clientID = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
+const redirect_to_url = process.env.REDIRECT_TO_URL || "/welcome.html";
 const PORT = process.env.PORT || 8080;
-
 const app = express();
+
 app.use(cors());
 app.options("*", cors());
 app.use(express.static(__dirname + "/public"));
@@ -38,7 +39,7 @@ app.get("/oauth/redirect", (req, res) => {
       // the response body
       const accessToken = response.data.access_token;
       // redirect the user to the welcome page, along with the access token
-      res.redirect(`/welcome.html?access_token=${accessToken}`);
+      res.redirect(`${redirect_to_url}?access_token=${accessToken}`);
     })
     .catch((error) => {
       // console.error(error);
@@ -46,6 +47,8 @@ app.get("/oauth/redirect", (req, res) => {
 });
 
 app.listen(PORT, () => {
+  console.log("dirname ", __dirname);
+  console.log("redirect to url ", redirect_to_url);
   console.log(`listening on ${PORT}`);
   console.log("client_secret ", clientSecret);
   console.log("client_id", clientID);
