@@ -10,6 +10,7 @@ const axios = require("axios");
 //
 const clientID = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 app.use(cors());
@@ -33,7 +34,7 @@ app.get("/oauth/redirect", (req, res) => {
     },
   })
     .then((response) => {
-      // Once we get the response, extract the access token from
+      // Once we get the respons extract the access token from
       // the response body
       const accessToken = response.data.access_token;
       // redirect the user to the welcome page, along with the access token
@@ -44,9 +45,8 @@ app.get("/oauth/redirect", (req, res) => {
     });
 });
 
-// Start the server on port 8080
-app.listen(8080, () => {
-  console.log("listening on 8080");
+app.listen(PORT, () => {
+  console.log(`listening on ${PORT}`);
   console.log("client_secret ", clientSecret);
   console.log("client_id", clientID);
 });
