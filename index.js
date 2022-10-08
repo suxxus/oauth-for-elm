@@ -42,7 +42,7 @@ app.get("/oauth/redirect", (req, res) => {
       res.redirect(`${redirect_to_url}?access_token=${accessToken}`);
     })
     .catch((error) => {
-      // console.error(error);
+      console.error(error);
     });
 });
 
