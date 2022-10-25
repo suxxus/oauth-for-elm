@@ -11,12 +11,20 @@ const axios = require("axios");
 const clientID = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
 const redirect_to_url = process.env.REDIRECT_TO_URL || "/welcome.html";
+const redirectUri =
+  process.env.REDIRECT_URI || "http://localhost:8080/oauth/redirect";
 const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.use(cors());
 app.options("*", cors());
-app.use(express.static(__dirname + "/public"));
+
+app.set("views", __dirname + "/public/views");
+app.set("view engine", "pug");
+
+app.get("/", (_, res) => {
+  res.render("./index.pug", { clientID, redirectUri });
+});
 
 // Declare the redirect route
 app.get("/oauth/redirect", (req, res) => {
@@ -49,6 +57,7 @@ app.get("/oauth/redirect", (req, res) => {
 app.listen(PORT, () => {
   console.log("dirname ", __dirname);
   console.log("redirect to url ", redirect_to_url);
+  console.log("redirect uri ", redirectUri);
   console.log(`listening on ${PORT}`);
   console.log("client_secret ", clientSecret);
   console.log("client_id", clientID);
