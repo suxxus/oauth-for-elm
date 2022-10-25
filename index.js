@@ -11,8 +11,7 @@ const axios = require("axios");
 const clientID = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
 const redirect_to_url = process.env.REDIRECT_TO_URL || "/welcome.html";
-const redirectUri =
-  process.env.REDIRECT_URI || "http://localhost:8080/oauth/redirect";
+const redirectUri = process.env.REDIRECT_URI || "http://localhost:8080/oauth/redirect";
 const PORT = process.env.PORT || 8080;
 const app = express();
 
@@ -58,7 +57,7 @@ app.listen(PORT, () => {
   console.log("dirname ", __dirname);
   console.log("redirect to url ", redirect_to_url);
   console.log("redirect uri ", redirectUri);
-  console.log(`listening on ${PORT}`);
+  console.log("listening on", PORT);
   console.log("client_secret ", clientSecret);
   console.log("client_id", clientID);
 });
