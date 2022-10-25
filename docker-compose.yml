@@ -1,0 +1,11 @@
+version: "0"
+name: oauth
+services:
+  server:
+    env_file: .env
+    image: implementing-oauth
+    build:
+      context: .
+    container_name: oauth
+    ports:
+      - "3500:3500"
