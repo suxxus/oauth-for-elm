@@ -10,9 +10,7 @@
   <script>
     // We can get the token from the "access_token" query
     // param, available in the browsers "location" global
-    const query = window.location.search.substring(1);
-    const token = query.split("access_token=")[1];
-
+    const token = String(window.location).split("/").reverse()[0];
     // Call the user info API using the fetch browser library
     fetch("https://api.github.com/user", {
       headers: {
