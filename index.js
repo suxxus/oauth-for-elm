@@ -18,6 +18,7 @@ const app = express();
 
 app.use(cors());
 app.options("*", cors());
+
 app.use(express.static(__dirname + "/public"));
 app.set("views", __dirname + "/public/views");
 app.set("view engine", "pug");
@@ -47,7 +48,24 @@ app.get("/oauth/redirect", (req, res) => {
       // the response body
       const accessToken = response.data.access_token;
       // redirect the user to the welcome page, along with the access token
-      res.redirect(`${redirect_to_url}?access_token=${accessToken}`);
+      res.redirect(`${redirect_to_url}/${accessToken}`);
+    })
+    .catch((error) => {
+      console.error("error", error);
+    });
+});
+
+app.get("/api/user/:access_token", (req, res) => {
+  const accessToken = req.params.access_token;
+  axios({
+    method: "get",
+    url: "https://api.github.com/user",
+    headers: {
+      Authorization: `token ${accessToken}`,
+    },
+  })
+    .then((response) => {
+      res.json(response.data);
     })
     .catch((error) => {
       console.error(error);
